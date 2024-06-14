@@ -80,7 +80,7 @@ class OutputValidator:
         elif result["type"] == "number":
             return isinstance(result["value"], (int, float, np.int64))
         elif result["type"] == "string":
-            return isinstance(result["value"], str)
+            return isinstance(result["value"], (str, dict))
         elif result["type"] == "dataframe":
             return isinstance(result["value"], (pd.DataFrame, pd.Series))
         elif result["type"] == "plot":
