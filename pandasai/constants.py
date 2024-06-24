@@ -95,6 +95,7 @@ WHITELISTED_LIBRARIES = [
     "datetime",
     "json",
     "io",
+    "re",
     "base64",
     "scipy",
     "streamlit",
