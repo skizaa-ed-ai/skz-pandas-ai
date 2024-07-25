@@ -38,7 +38,11 @@ class DataSampler:
             sampled_df = self.df.sample(frac=1)
         else:
             for col in self.df.columns:
-                col_sample = self._sample_column(col, n)
+                col_sample = []
+                try:
+                    col_sample = self._sample_column(col, n)
+                except Exception as e:
+                    print(f"Error occurred while sampling column {col}: {e}")
                 sampled_df[col] = pd.Series(col_sample)
 
         # anonymize the sampled dataframe head
@@ -58,7 +62,9 @@ class DataSampler:
         """
 
         col_sample = []
-        col_values = self.df[col].dropna().unique()
+        # col_values = self.df[col].dropna().unique()
+        col_values = self.df[col].drop_duplicates().dropna().values
+
 
         # if there is a null value in the column, it MUST be included in the sample
         if self.df[col].isna().any():
