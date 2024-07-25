@@ -39,7 +39,7 @@ class DataSampler:
         else:
             for col in self.df.columns:
                 col_sample = self._sample_column(col, n)
-                sampled_df[col] = col_sample
+                sampled_df[col] = pd.Series(col_sample)
 
         # anonymize the sampled dataframe head
         sampled_df = Anonymizer.anonymize_dataframe_head(sampled_df)
