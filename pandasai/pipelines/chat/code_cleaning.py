@@ -164,7 +164,7 @@ Code running:
         Returns (bool):
         """
 
-        DANGEROUS_BUILTINS = ["__subclasses__", "__builtins__", "__import__"]
+        DANGEROUS_BUILTINS = ["__subclasses__", "__builtins__"]
 
         node_str = ast.dump(node)
 
